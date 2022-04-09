@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdint.h>
 
 typedef struct emp_ {
 	char name[32];
@@ -8,7 +9,7 @@ typedef struct emp_ {
 } emp_t;
 
 #define offset(struct_name, field_name) \
-	(unsigned int)&((struct_name *)0)->field_name
+	(uintptr_t)&((struct_name *)0)->field_name
 
 /** -> comes above & in operator precedence */
 
