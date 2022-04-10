@@ -7,10 +7,10 @@ libgldll.a: glthread.o
 	ar rs $@ $^
 
 main.o: main.c
-	gcc -c -I . $^ -o $@
+	gcc -ggdb -c -I . $^ -o $@
 
 glthread.o: glthread.c
-	gcc -c -I . $^ -o $@
+	gcc -ggdb -c -I . $^ -o $@
 
 clean:
 	rm *.a
