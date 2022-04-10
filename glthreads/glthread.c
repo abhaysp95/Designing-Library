@@ -49,6 +49,10 @@ glthread_add(glthread_t *lst, glthread_node_t *glnode) {
 static void
 _glthread_remove(glthread_node_t *glnode) {
 
+	/** technically, you can have the logic to free the glnode in here, but I
+	 * haven't added it since the logic of allocating glnode is not added in
+	 * function which adds glnode to glthread list */
+
 	if (!glnode->right) {
 		if (glnode->left) {
 			glnode->left->right = NULL;
