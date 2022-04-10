@@ -11,6 +11,7 @@ _glthread_add_next(glthread_node_t *new_node,
 	if (!new_node->right) {  // if new_node is alone, add it in first pos
 		new_node->right = curr_node;
 		curr_node->left = new_node;  // head's left is NULL, generally
+		return;
 	}
 
 	// if new_node is not alone,

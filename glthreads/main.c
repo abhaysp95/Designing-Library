@@ -58,6 +58,7 @@ main(int argc, char **argv) {
 	emp_t *emp = NULL;
 	ITERATE_GLTHREAD_BEGIN(emp_list, emp_t, emp)
 		print_emp_details(emp);
+		free(emp);
 	ITERATE_GLTHREAD_END
 
 	return 0;
