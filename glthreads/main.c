@@ -58,8 +58,24 @@ main(int argc, char **argv) {
 	emp_t *emp = NULL;
 	ITERATE_GLTHREAD_BEGIN(emp_list, emp_t, emp)
 		print_emp_details(emp);
-		free(emp);
 	ITERATE_GLTHREAD_END
+
+	/** remove the current head */
+	glthread_remove(emp_list, &emp3->glnode);
+	ITERATE_GLTHREAD_BEGIN(emp_list, emp_t, emp)
+		print_emp_details(emp);
+	ITERATE_GLTHREAD_END
+
+	/** since, logic of freeing glnodes (emp_t) is not in glthread_remove, to
+	 * free all the nodes, you have to add them in a glthread_list and iterate
+	 * throught it */
+	glthread_add(emp_list, &emp3->glnode);
+	ITERATE_GLTHREAD_BEGIN(emp_list, emp_t, emp) {
+		glthread_remove(emp_list, &emp->glnode);
+		free(emp);
+	} ITERATE_GLTHREAD_END
+
+	free(emp_list);
 
 	return 0;
 }
