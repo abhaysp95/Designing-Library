@@ -46,3 +46,8 @@ void decode_tlv(char *tlv_ptr) {
     tlv_ptr += data_blocks_size;
   }
 }
+
+// another possible solution to fix problem of heterogenity could be using
+// uint8_t, int8_t and such other types of different sizes from <stdint.h>.
+// Although, there's a possibly that this header file might not be present
+// everywhere
